@@ -3,7 +3,7 @@ package com.formbuilder.easyservey.service;
 import com.formbuilder.easyservey.entity.UserResponse;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import java.io.ByteArrayInputStream;
 
 public interface IUserAnswerService {
 
@@ -11,7 +11,7 @@ public interface IUserAnswerService {
 
     public ResponseEntity<?> getAll(int fId);
 
-   // public ResponseEntity<?> ExportExcelById(int fId);
+    public ByteArrayInputStream ExportExcelById(int fId);
 
 
 }

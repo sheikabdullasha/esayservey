@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             }
         }).and()
                 .csrf().disable().authorizeRequests()
-                .antMatchers("/auth/**")
+                .antMatchers("/auth/**","/users/getExcelFile/**")
                 .permitAll()
                .anyRequest().authenticated()
                 .and().exceptionHandling().and().sessionManagement()
