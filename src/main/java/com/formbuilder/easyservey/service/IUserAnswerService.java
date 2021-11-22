@@ -10,4 +10,8 @@ public interface IUserAnswerService {
     public ResponseEntity<?> save(UserResponse userResponse);
 
     public ResponseEntity<?> getAll(int fId);
+
+   // public ResponseEntity<?> ExportExcelById(int fId);
+
+
 }
