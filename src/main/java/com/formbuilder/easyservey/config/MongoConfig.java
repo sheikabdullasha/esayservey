@@ -11,14 +11,7 @@ import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
 
-   /* ConnectionString connectionString = new ConnectionString("mongodb+srv://sheik:abuabu@sheikcluster.cwbuj.mongodb.net/mocsyam?retryWrites=true&w=majority");
-    MongoClientSettings setting = MongoClientSettings.builder()
-            .applyConnectionString(connectionString)
-            .build();
-    MongoClient mongoClient = MongoClients.create(setting);
-    MongoDatabase database = mongoClient.getDatabase("mocsyam");
 
-    MongoCollection<Document> userCollection=database.getCollection("user");*/
 
     @Override
     public MongoClient mongoClient() {
