@@ -39,7 +39,7 @@ public class LoginController {
     }
 
 
-@GetMapping("/authenticate")
+@PostMapping("/authenticate")
 public String generateJwtToken(@RequestBody AuthRequest authRequest) throws Exception {
     try {
         authenticationManager.authenticate(
