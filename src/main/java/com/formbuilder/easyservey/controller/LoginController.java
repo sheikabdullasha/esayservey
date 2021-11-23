@@ -13,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 
@@ -51,7 +52,7 @@ public String generateJwtToken(@RequestBody AuthRequest authRequest) throws Exce
     return jwtUtil.generateToken(authRequest.getMailId());
 }
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user){
+    public ResponseEntity<?> register(@Valid @RequestBody User user){
         Optional<User> usr=userRepository.findByEmail1(user.getMailId());
 
         if(!usr.isPresent()){

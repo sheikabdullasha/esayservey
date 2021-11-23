@@ -1,6 +1,7 @@
 package com.formbuilder.easyservey.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.formbuilder.easyservey.DataValidation.UniqueEmail;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.HashMap;
 import java.util.List;
+import javax.validation.constraints.*;
 
 
 @AllArgsConstructor
@@ -23,16 +25,18 @@ public class User {
     @Id
     private int uId;
 
-
+    @NotBlank(message = "Name is mandatory")
     private String firstName;
 
 
     private String lastName;
 
-
+    @Email
+    @UniqueEmail
+    @NotBlank(message = "Email is mandatory")
     private String mailId;
 
-
+    @NotBlank(message = "password is mandatory")
     private String password;
 
     private String type;
