@@ -12,4 +12,6 @@ public interface IQuestionsService {
     public ResponseEntity<String> saveAll(List<QuestionsPayload> questionsPayloads);
 
     public ResponseEntity<?> getAllById(int id);
+
+    ResponseEntity<?> getAllFormByUserId(int uId);
 }

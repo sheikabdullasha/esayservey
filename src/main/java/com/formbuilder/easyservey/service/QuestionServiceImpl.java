@@ -9,6 +9,7 @@ import com.formbuilder.easyservey.repo.IUserRepository;
 import com.formbuilder.easyservey.repo.QuestionsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -104,6 +105,19 @@ public class QuestionServiceImpl implements IQuestionsService{
         }
 
         return new ResponseEntity<String>("error in Question GETALL API",HttpStatus.BAD_REQUEST);
+    }
+
+    @Override
+    public ResponseEntity<?> getAllFormByUserId(int uId) {
+
+        List<Form> forms = questionsRepository.findAllFormByUserId(uId);
+        if (forms.size()!=0) {
+
+            return new ResponseEntity<List<Form>>(forms, HttpStatus.FOUND);
+        }
+
+        return new ResponseEntity<String>("No data", HttpStatus.NOT_FOUND);
+
     }
 
 }

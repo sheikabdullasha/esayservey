@@ -30,6 +30,13 @@ public class QuestionsController {
     }
 
 
+    @GetMapping("/getAllFormsByUserId/{uId}")
+    public ResponseEntity<?> getAllForms(@PathVariable int uId){
+        return questionService.getAllFormByUserId(uId);
+    }
+
+
+
 
 
 
