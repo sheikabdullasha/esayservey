@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -30,6 +31,7 @@ public class LoginController {
     private final IUserRepository userRepository;
 
     private final SequenceGeneratorservice generatorservice;
+    private final PasswordEncoder passwordEncoder;
 
 
 
@@ -58,6 +60,7 @@ public String generateJwtToken(@RequestBody AuthRequest authRequest) throws Exce
         if(!usr.isPresent()){
             user.setUId(generatorservice.getSequenceNumber(User.SEQUENCE_NAME));
             user.setType(RoleConstant.User.getRole());
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             userRepository.save(user);
             return new ResponseEntity<String>("Registered", HttpStatus.CREATED);
         }
